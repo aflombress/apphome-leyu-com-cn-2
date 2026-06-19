@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>乐鱼体育 · 资讯与观察</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', '宋体', serif;
+      background: #faf6f0;
+      color: #2c3e4f;
+      line-height: 1.75;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fefcf9;
+      padding: 3rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+      border: 1px solid #ebe5db;
+      flex: 1;
+    }
+
+    /* 开场短句 */
+    .opening {
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: #3a5e6b;
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid #d9cdbc;
+    }
+
+    .opening em {
+      font-style: italic;
+      color: #7f5f4c;
+    }
+
+    /* 承接段落 */
+    .lead {
+      margin-top: 1.8rem;
+      font-size: 1.1rem;
+      text-align: justify;
+    }
+
+    .lead a {
+      color: #3a6b7d;
+      text-decoration: none;
+      border-bottom: 1px dotted #a7b9b9;
+      padding: 0 1px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .lead a:hover {
+      border-bottom: 1px solid #3a6b7d;
+      color: #1f4a5a;
+    }
+
+    /* 特点列表 */
+    .features {
+      margin: 2.4rem 0 2rem;
+      padding: 0;
+      list-style: none;
+    }
+
+    .features li {
+      position: relative;
+      padding: 0.6rem 0 0.6rem 2rem;
+      font-size: 1.02rem;
+      border-bottom: 1px dashed #e3dcd2;
+    }
+
+    .features li:last-child {
+      border-bottom: none;
+    }
+
+    .features li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #8b7b6a;
+      font-weight: 300;
+      font-size: 1.2rem;
+    }
+
+    .features strong {
+      font-weight: 600;
+      color: #3a5e4b;
+    }
+
+    /* 引用块 / 提示框 */
+    .note-box {
+      background: #f2ede6;
+      border-left: 5px solid #b7a99a;
+      padding: 1.2rem 1.6rem;
+      margin: 2rem 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.98rem;
+      color: #3d4f58;
+      line-height: 1.7;
+    }
+
+    .note-box .label {
+      display: inline-block;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b5d4e;
+      margin-bottom: 0.25rem;
+    }
+
+    /* 温和结尾 */
+    .closing {
+      margin-top: 2.2rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid #e3dbcf;
+      font-size: 1rem;
+      color: #4c5e63;
+      text-align: right;
+      font-style: italic;
+    }
+
+    .closing strong {
+      font-weight: 500;
+      color: #3a5e4b;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      .page {
+        padding: 2rem 1.2rem;
+      }
+
+      .opening {
+        font-size: 1.4rem;
+      }
+
+      .lead {
+        font-size: 1rem;
+      }
+
+      .features li {
+        font-size: 0.98rem;
+        padding-left: 1.5rem;
+      }
+
+      .note-box {
+        padding: 1rem 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 1rem 0.5rem;
+      }
+
+      .page {
+        padding: 1.5rem 1rem;
+        border-radius: 6px;
+      }
+
+      .opening {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 开场短句 -->
+  <div class="opening">
+    一份运动数据索引，<em>不止于结果</em>。
+  </div>
+
+  <!-- 承接段落：从日常查询、对照和延伸阅读切入 -->
+  <div class="lead">
+    对于习惯在赛前做功课、赛后做比对的爱好者来说，一个稳定且信息维度清晰的来源往往比即时比分更重要。从联赛轮次到阵容变动，从盘口基准到历史交锋，每一次查询都像在拼一幅完整的拼图。<a href="https://apphome-leyu.com.cn">乐鱼体育</a>所整合的内容层，恰好为这类延伸阅读提供了平实的参照系——没有冗余的弹窗，也没有过度渲染的数据，而是更接近一本实时更新的运动档案。
+  </div>
+
+  <!-- 特点列表 -->
+  <ul class="features">
+    <li><strong>横向对照</strong> — 同时段多场次数据并列呈现，便于快速横向对比联赛、杯赛与友谊赛的节奏差异。</li>
+    <li><strong>纵向回溯</strong> — 过往轮次的统计与录播资源可逐场调取，适合复盘战术或验证判断逻辑。</li>
+    <li><strong>信息颗粒度</strong> — 从基础比分到控球率、射正数、犯规分布，保留合理细节而不堆砌无效数字。</li>
+    <li><strong>场景适应性</strong> — 桌面端与移动端均保持相同的排版层级，减少因设备切换产生的信息损耗。</li>
+  </ul>
+
+  <!-- 提示块（引用框风格） -->
+  <div class="note-box">
+    <span class="label">📋 实用提示</span><br>
+    将常用联赛或球队加入关注清单后，首页动态会优先展示相关赛程与变动。建议定期清理关注列表中的过期赛事，以保持信息流的精确度。
+  </div>
+
+  <!-- 温和结尾 -->
+  <div class="closing">
+    —— 从日常查询到对照延伸，<strong>信息秩序本身也是一种工具。</strong>
+  </div>
+
+</div>
+</body>
+</html>
