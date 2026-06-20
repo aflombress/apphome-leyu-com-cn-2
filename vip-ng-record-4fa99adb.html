@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NG导航 · 日常查询、对照与延伸阅读</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #fce5d7 0%, #f8d5c0 50%, #f3c8ad 100%);
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1.5rem 3rem;
+            line-height: 1.6;
+            color: #2c2c2c;
+        }
+
+        .page {
+            max-width: 820px;
+            width: 100%;
+        }
+
+        /* 白色内容卡片 */
+        .card {
+            background: #fffffffa;
+            backdrop-filter: blur(2px);
+            border-radius: 48px 24px 48px 24px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(90, 50, 30, 0.08);
+            padding: 2.8rem 2.5rem;
+            margin-bottom: 2.5rem;
+            transition: box-shadow 0.25s;
+        }
+
+        .card:hover {
+            box-shadow: 0 18px 36px rgba(60, 35, 20, 0.10);
+        }
+
+        /* hero 区 */
+        .hero {
+            text-align: center;
+            padding: 3rem 1.8rem 2.2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 550;
+            letter-spacing: 2px;
+            color: #4b2f1d;
+            margin-bottom: 0.4rem;
+            word-break: keep-all;
+            background: linear-gradient(135deg, #5d3a1e, #9b6b47);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .tagline {
+            font-size: 1.25rem;
+            color: #5c4332;
+            margin: 0.6rem 0 1rem;
+            font-weight: 380;
+            border-top: 1px solid #ebd5c0;
+            border-bottom: 1px solid #ebd5c0;
+            padding: 0.6rem 0;
+            display: inline-block;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: #3d302a;
+            max-width: 600px;
+            margin: 0.8rem auto 0.3rem;
+        }
+
+        /* 优势区域 卡片内网格 */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem 1.2rem;
+            margin: 1.2rem 0 0.6rem;
+        }
+
+        .grid-item {
+            background: #f6ede7;
+            border-radius: 32px 16px 32px 16px;
+            padding: 1.2rem 0.9rem;
+            text-align: center;
+            transition: transform 0.15s, background 0.2s;
+        }
+
+        .grid-item:hover {
+            background: #ecdacf;
+            transform: scale(1.02);
+        }
+
+        .grid-item .emoji-big {
+            font-size: 2.2rem;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .grid-item h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #3f2b1c;
+            margin-bottom: 0.2rem;
+        }
+
+        .grid-item p {
+            font-size: 0.88rem;
+            color: #564434;
+            line-height: 1.4;
+        }
+
+        /* 说明区域——场景段落 */
+        .scene-block {
+            display: flex;
+            flex-direction: column;
+            gap: 1.6rem;
+        }
+
+        .scene-piece {
+            border-left: 4px solid #dbb59a;
+            padding-left: 1.3rem;
+        }
+
+        .scene-piece h4 {
+            font-size: 1.1rem;
+            font-weight: 540;
+            color: #4b3425;
+            margin-bottom: 0.3rem;
+        }
+
+        .scene-piece p {
+            color: #3d2f27;
+            font-size: 0.98rem;
+        }
+
+        .scene-piece .inline-link {
+            background: #f3e4db;
+            padding: 0.1rem 0.5rem;
+            border-radius: 20px;
+            font-weight: 450;
+            text-decoration: none;
+            color: #5f3d27;
+            transition: background 0.2s, color 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .scene-piece .inline-link:hover {
+            background: #e6cfbe;
+            color: #2d1f15;
+            border-color: #b58e73;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            margin-top: 0.6rem;
+        }
+
+        .faq-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #e6d4c6;
+        }
+
+        .faq-item:last-child {
+            border-bottom: 0;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 550;
+            color: #3f2c1d;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-item p {
+            font-size: 0.93rem;
+            color: #4f3b2e;
+        }
+
+        /* 底部链接 */
+        .bottom-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem 3rem;
+            padding: 1.2rem 0.5rem;
+            border-top: 1px solid #dcc3b0;
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .bottom-links a {
+            color: #5f3f2b;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+            font-weight: 430;
+        }
+
+        .bottom-links a:hover {
+            border-bottom-color: #a77b5f;
+            color: #39281c;
+        }
+
+        .footnote {
+            text-align: center;
+            color: #6f5543;
+            font-size: 0.88rem;
+            margin: 1.2rem 0 0.2rem;
+        }
+
+        a.primary-link {
+            color: #7b543a;
+            text-decoration: none;
+            font-weight: 480;
+            padding: 0.1rem 0.3rem;
+            border-radius: 20px;
+            background: #f3e1d4;
+            transition: background 0.2s;
+        }
+
+        a.primary-link:hover {
+            background: #e4ccb8;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 640px) {
+            body {
+                padding: 1.5rem 1rem 2rem;
+            }
+            .card {
+                padding: 1.8rem 1.2rem;
+                border-radius: 32px 16px 32px 16px;
+            }
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            .grid-3 {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+            .bottom-links {
+                gap: 1rem 1.8rem;
+            }
+            .hero .tagline {
+                font-size: 1.05rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- Hero 区 -->
+    <div class="card hero">
+        <h1>NG导航</h1>
+        <div class="tagline">日常查询 · 对照 · 延伸阅读</div>
+        <p>把散落的信息连接起来——从快速查词、对照版本到深入背景，一个更安静的检索起点。</p>
+    </div>
+
+    <!-- 优势区 -->
+    <div class="card">
+        <h2 style="font-weight: 480; color: #3f2b1c; margin-bottom: 0.8rem; font-size: 1.4rem;">为什么用它作为日常起点</h2>
+        <div class="grid-3">
+            <div class="grid-item">
+                <span class="emoji-big">📋</span>
+                <h3>对照清晰</h3>
+                <p>多列信息并列展示，术语、释义、原文一目了然，减少来回切换。</p>
+            </div>
+            <div class="grid-item">
+                <span class="emoji-big">🔎</span>
+                <h3>查询顺手</h3>
+                <p>搜索响应快，结果结构干净，定位关键词不费力。</p>
+            </div>
+            <div class="grid-item">
+                <span class="emoji-big">📎</span>
+                <h3>延伸自然</h3>
+                <p>条目内嵌相关链接与注释，顺着读下去就能发现更多上下文。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 说明区：从日常使用场景切入 -->
+    <div class="card">
+        <h2 style="font-weight: 480; color: #3f2b1c; margin-bottom: 1.2rem; font-size: 1.4rem;">几个典型用法</h2>
+        <div class="scene-block">
+            <div class="scene-piece">
+                <h4>📖 查一个词，看不同语境</h4>
+                <p>遇到陌生术语时，在 <a href="https://vip-ng.com" class="primary-link">NG导航</a> 里检索，往往能得到多个来源的释义与用例，方便对比理解，而不是只给一个孤立的解释。</p>
+            </div>
+            <div class="scene-piece">
+                <h4>🧩 对照原文与译文</h4>
+                <p>需要确认某段翻译是否准确？把原文和译本并列显示，逐句对照，比来回翻标签页更节省精力。</p>
+            </div>
+            <div class="scene-piece">
+                <h4>🌐 延伸背景阅读</h4>
+                <p>每一条内容附带的参考链接和注释，像是有人提前帮你整理好了延伸书目或相关文章，适合需要深入理解一个话题的时候。</p>
+            </div>
+        </div>
+        <p style="margin-top: 1.2rem; font-size: 0.95rem; color: #594435; background: #f6ebe2; padding: 0.6rem 1rem; border-radius: 30px;">
+            ⚡ 它不会替你判断，但可以让你更有效率地做自己的判断。
+        </p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="card">
+        <h2 style="font-weight: 480; color: #3f2b1c; margin-bottom: 0.6rem; font-size: 1.4rem;">常见想法 · 简短回应</h2>
+        <div class="faq-mini">
+            <div class="faq-item">
+                <strong>和普通搜索引擎有什么不同？</strong>
+                <p>它更侧重内容的结构化呈现与对照，适合已经知道要找什么，但需要多角度比较或延伸阅读的场景。</p>
+            </div>
+            <div class="faq-item">
+                <strong>需要注册或付费吗？</strong>
+                <p>直接使用，没有注册门槛，也没有隐藏收费。</p>
+            </div>
+            <div class="faq-item">
+                <strong>可以自己添加条目或注释吗？</strong>
+                <p>目前侧重于浏览和查询，未来或许会加入协作功能。现阶段用它作为信息整理好的起点就很够用。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部链接 -->
+    <div class="bottom-links">
+        <a href="https://vip-ng.com">NG导航</a>
+        <a href="#">使用建议</a>
+        <a href="#">更新记录</a>
+        <a href="#">关于</a>
+    </div>
+
+    <div class="footnote">
+        一份认真整理的说明页 · 内容保持克制与真实
+    </div>
+</div>
+</body>
+</html>
